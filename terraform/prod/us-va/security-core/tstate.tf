@@ -10,6 +10,9 @@ terraform {
       version = "~>2.39.0"
     }
   }
+
+  # Backend commented out for the initial deploy. Uncomment to migrate state
+
   # backend "azurerm" {
   #   resource_group_name  = "ex-prod-va-mp-core-rg"
   #   storage_account_name = "exprodvampsatfstate"

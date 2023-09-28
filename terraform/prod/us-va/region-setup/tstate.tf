@@ -11,9 +11,9 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name  = "df-prod-va-mp-core-rg"
-    storage_account_name = "dfprodvampsatfstate"
-    container_name       = "vadftfstatecontainer"
+    resource_group_name  = "ex-prod-va-mp-core-rg"
+    storage_account_name = "exprodvampsatfstate"
+    container_name       = "vaextfstatecontainer"
     environment          = "usgovernment"
     key                  = "va-region-setup.tfstate"
   }

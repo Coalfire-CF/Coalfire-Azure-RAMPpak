@@ -13,12 +13,13 @@ module "setup" {
   app_rg_name           = "${local.resource_prefix}-application-rg"
   key_vault_rg_name     = "${local.resource_prefix}-keyvault-rg"
   networking_rg_name    = "${local.resource_prefix}-networking-rg"
-  sas_start_date        = "2022-01-26"
-  sas_end_date          = "2022-09-15"
+  sas_start_date        = "2023-09-28" # Today's date
+  sas_end_date          = "2023-12-28" # 3 months from today
   ip_for_remote_access  = var.ip_for_remote_access
   core_kv_id            = data.terraform_remote_state.core.outputs.core_kv_id
   diag_log_analytics_id = data.terraform_remote_state.core.outputs.core_la_id
   admin_principal_ids   = var.admin_principal_ids
+  
   # uncomment the following line when the mgmt-network is created
   #firewall_vnet_subnet_ids = values(data.terraform_remote_state.usgv_mgmt_vnet.outputs.usgv_mgmt_vnet_subnet_ids) #Uncomment and rerun terraform apply after the mgmt-network is created
   additional_resource_groups = [

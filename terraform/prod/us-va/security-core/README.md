@@ -63,6 +63,7 @@ terraform {
      key                  = "va-security-core.tfstate"
    }
 }
+```
 
 Once the `tstate.tf` file is updated, run `terraform init -reconfigure` to update the state file to the remote storage account. when prompted to migrate the state, select `yes`.
 

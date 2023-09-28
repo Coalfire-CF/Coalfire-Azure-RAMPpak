@@ -18,7 +18,7 @@ module "subnet_addrs" {
 }
 
 module "app-vnet" {
-  source              = "../../../../modules/azurerm-vnet"
+  source              = "github.com/Coalfire-CF/terraform-azurerm-vnet"
   vnet_name           = "${local.resource_prefix}-app-vnet-1"
   resource_group_name = data.terraform_remote_state.setup.outputs.network_rg_name
   address_space       = [module.subnet_addrs.base_cidr_block]
@@ -37,8 +37,13 @@ module "app-vnet" {
     }
   }
 
-  # Note: DNS servers should be left to Azure default until the DC's are up. Otherwise the VM's will fail to get DNS to download scripts from storage accounts.
-  dns_servers   = concat(data.terraform_remote_state.usgv-ad.outputs.ad_dc1_ip, data.terraform_remote_state.usgv-ad.outputs.ad_dc2_ip)
+  diag_log_analytics_id = data.terraform_remote_state.core.outputs.core_la_id
+  #storage_account_flowlogs_id     = data.terraform_remote_state.setup.outputs.storage_account_flowlogs_id
+  #network_watcher_name            = data.terraform_remote_state.setup.outputs.network_watcher_name
+
+  #Attach Vnet to Private DNS zone
+  private_dns_zone_id = data.terraform_remote_state.core.outputs.core_private_dns_zone_id.0
+
   regional_tags = var.regional_tags
   global_tags   = var.global_tags
   tags = {

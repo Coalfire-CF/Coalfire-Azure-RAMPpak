@@ -41,17 +41,13 @@ variable "environment" {
 variable "mgmt_network_cidr" {
   type        = string
   description = "CIDR for the management network"
-  default     = "10.0.0.0/16"
+  default     = "10.10.0.0/16"
 }
 
 variable "app_network_cidr" {
-  type        = map(string)
-  description = "CIDRs for the application networks if applicable"
-  default = {
-    app1 = "10.1.0.0/16",
-    app2 = "10.2.0.0/16",
-    app3 = "10.3.0.0/16",
-  }
+  type        = string
+  description = "CIDR for the application networks if applicable"
+  default     = "10.20.0.0/16"
 }
 
 variable "availability_zone_1" {

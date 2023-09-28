@@ -18,11 +18,11 @@ This deploys the Application Plane Vnet and it's subnets
 
 ``` hcl
 terraform {
-  required_version = ">= 1.1.2"
+  required_version = "~>1.5.0"
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 2.91.0"
+      version = "~> 3.61.0"
     }
   }
   backend "azurerm" {
@@ -55,8 +55,8 @@ data "terraform_remote_state" "usgv_app_vnet" {
     storage_account_name = "${var.location_abbreviation}mp${var.app_abbreviation}satfstate"
     resource_group_name  = "${var.location_abbreviation}-mp-${var.app_abbreviation}-core-rg"
     container_name       = "${var.location_abbreviation}${var.app_abbreviation}tfstatecontainer"
-    var.az_environment
-    key                  = "use2-app-vnet.tfstate"
+    environment          = var.az_environment
+    key                  = "va-app-vnet.tfstate"
   }
 }
 ```
@@ -74,10 +74,3 @@ data "terraform_remote_state" "usgv_app_vnet" {
 
 Enable VNet peering between the Management Plane and Application Plane VNet's. (mgmt/vnet-peering)
 
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| usgv_app_vnet_id | The id of the application vnet |
-| usgv_app_vnet_name | The name of the application vnet |
-| usgv_app_vnet_subnet_ids | The ids of subnets created inside the new vnet |

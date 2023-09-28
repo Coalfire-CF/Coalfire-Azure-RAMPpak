@@ -10,11 +10,11 @@ terraform {
       version = "~>2.39.0"
     }
   }
-  backend "azurerm" {
-    resource_group_name  = "df-prod-va-mp-core-rg"
-    storage_account_name = "dfprodvampsatfstate"
-    container_name       = "vadftfstatecontainer"
-    environment          = "usgovernment"
-    key                  = "va-security-core.tfstate"
-  }
+  # backend "azurerm" {
+  #   resource_group_name  = "ex-prod-va-mp-core-rg"
+  #   storage_account_name = "exprodvampsatfstate"
+  #   container_name       = "vaextfstatecontainer"
+  #   environment          = "usgovernment"
+  #   key                  = "va-ex-security-core.tfstate"
+  # }
 }

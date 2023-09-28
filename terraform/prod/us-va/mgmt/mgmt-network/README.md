@@ -13,7 +13,7 @@ This deploys the Management VNet and it's subnets
 
 - Update the name and number of subnets as needed in the `subnet_addrs` module.
 - If you need to add or remove Service Endpoints, do so in the `subnet_service_endpoints` block. See <https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet> for Service Endpoint options.
-- For the initial deployment, ensure the `dns_servers` line is commented out until the Domain controllers are online. Once the DC's are online uncomment and rerun an `apply`.
+
 
 `tstate.tf` Update to the appropriate version and storage accounts, see sample
 
@@ -30,7 +30,7 @@ terraform {
     resource_group_name  = "prod-va-mp-core-rg"
     storage_account_name = "prodvampsatfstate"
     container_name       = "vatfstatecontainer"
-    var.az_environment
+    environment          = "usgovernment"
     key                  = "va-mgmt-network.tfstate"
   }
 }
@@ -62,20 +62,11 @@ Rerun `terraform apply` to update all changes
 | Subnet | SIEM /24 network |
 | Subnet | Monitor /24 network |
 | Subnet | Bastion /24 network |
+| Subnet | AzureFirewallsubnet /24 network |
+| Subnet | Private Endpoint /24 network |
+| Subnet | PostgreSQL /24 network |
+
 
 ## Next steps
 
-Application VNet (terraform/prod/{region}/mgmt/mgmt-network)
-
-### Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| usgv_mgmt_vnet_id | The id of the management vnet |
-| usgv_mgmt_vnet_name | The name of the management vnet |
-| usgv_mgmt_vnet_subnet_ids | The ids of subnets created inside the new vnet |
+Application VNet (terraform/prod/{region}/app/app-network)

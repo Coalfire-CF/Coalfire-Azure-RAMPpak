@@ -14,10 +14,9 @@ output "usgv_mgmt_networks" {
   value = module.mgmt-vnet.subnet_addresses
 }
 
-
-# output "network_cidr_blocks" {
-#   value = module.subnet_addrs.network_cidr_blocks
-# }
+output "network_cidr_blocks" {
+  value = module.subnet_addrs.network_cidr_blocks
+}
 
 output "networks" {
   value = module.subnet_addrs.networks

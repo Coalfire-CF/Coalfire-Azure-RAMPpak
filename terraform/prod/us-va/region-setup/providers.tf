@@ -1,0 +1,3 @@
+provider "azuread" {
+  environment = "usgovernment"
+}

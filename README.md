@@ -1,128 +1,109 @@
 ![Coalfire](coalfire_logo.png)
 
-# Coalfire pak README Template
+# Coalfire-Azure-RAMPpak
 
-## Repository Title
+Coalfire created reference architecture for FedRAMP Azure builds. This repository is used as a parent directory to deploy `Coalfire-CF/terraform-azurerm-<service>` modules.
 
-Include the name of the Repository as the header above e.g. `ACE-Cloud-Service`
+Learn more at [Coalfire OpenSource](https://coalfire.com/opensource).
 
 ## Dependencies
 
-List any dependencies here. E.g. security-core, region-setup
+- Azure Commercial or Government Subscription
+- Azure Tenant Provisioning 
+- [az cli](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) is installed
+- User with, at minimum, `contributor` subscription access
+- Terraform is installed and in PATH.
 
-## Resource List
+## Repository Structure
 
-Insert a high-level list of resources created as a part of this module. E.g.
-
-- Storage Account
-- Containers
-- Storage share
-- Lifecycle policy
-- CMK key and Iam Role Assignment
-- Monitor diagnostic setting
+| Directory | Purpose |
+| --------- | ------- |
+| `shellscripts/` | Deployment and VM Extension Scripts |
+| `terraform/prod/us-tx/` | Disaster Recovery region terraform files |
+| `terraform/prod/us-va/` | Primary region terraform files |
+| `terraform/prod/global-vars.tf` | Global Variables |
+| `terraform/prod/us-va/app/` | Application plane terraform files |
+| `terraform/prod/us-va/mgmt/` | Management plane terraform files |
+| `terraform/prod/us-va/region-setup/` | Management plane `region-setup` terraform files |
+| `terraform/prod/us-va/mgmt/security-core` | Management plane `security-core` terraform files |
+| `terraform/prod/us-va/regional-vars.tf` | Regional variables |
+| `terraform/prod/us-va/remote-data.tf` | Remote Data from state files. Uncomment as more infrastructure is deployed |
 
 ## Code Updates
 
-If applicable, add here. For example, updating variables, updating `tstate.tf`, or remote data sources.
+1. Update `terraform/prod/global-vars.tf` variables
+2. Update `terraform/prod/us-va/regional-vars.tf` variables, if applicable
 
-`tstate.tf` Update to the appropriate version and storage accounts, see sample
+## Deployment 
 
-``` hcl
-terraform {
-  required_version = ">= 1.1.7"
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 3.45.0"
-    }
-  }
-  backend "azurerm" {
-    resource_group_name  = "prod-mp-core-rg"
-    storage_account_name = "prodmpsatfstate"
-    container_name       = "tfstatecontainer"
-    environment          = "usgovernment"
-    key                  = "ad.tfstate"
-  }
-}
-```
+1. Login to the azure cli, `az login`. You may have to change the cloud if you receive an error. `az cloud set --name AzureUSGovernment`
+2. Navigate to `terraform/prod/us-va/security-core` and run `terraform init` and `terraform plan`. If everything looks good run `terraform apply`.
+3. Navigate to `terraform/prod/us-va/region-setup` and run `terraform init` and `terraform plan`. If everything looks good run `terraform apply`.
+4. Deploy `mgmt` and `app` resources in a similar fashion. Order of deployment is below.
 
-Change directory to the `active-directory` folder
+## Deployment Order of Operations
 
-Run `terraform init` to download modules and create initial local state file.
+1. Azure Tenant Provisioning
+2. Security Core (terraform/prod/us-va/security-core)
+3. Region Setup (terraform/prod/us-va/region-setup)
+4. Management VNet (terraform/prod/us-va/mgmt/mgmt-network)
+5. Application VNet (terraform/prod/us-va/app/app-network)
+6. Management/Application VNet Peering (terraform/prod/us-va/mgmt/vnet-peering)
+7. Key Vaults (terraform/prod/us-va/mgmt/key-vault)
+8. Azure Automation (terraform/prod/us-va/mgmt/azure-automation)
+9. Bastions (terraform/prod/us-va/mgmt/bastion)
+10. Other tooling/Application Plane
 
-Run `terraform plan` to ensure no errors and validate plan is deploying expected resources.
+## Deployment Configurations
 
-Run `terraform apply` to deploy infrastructure.
+Each module, e.g. `region-setup`, has a README file that provides deployment steps, dependencies, and other notes on each component in the environment.
 
-Update the `remote-data.tf` file to add the security state key
+## Modifications when new Admins are added
 
-``` hcl
+- Add their PIP or use the Coalfire VPN to access and deploy resources, otherwise the user cannot access Key Vaults, storage account with the state files or the bastion hosts.
 
-data "terraform_remote_state" "usgv-ad" {
-  backend = "azurerm"
-  config = {
-    storage_account_name = "${local.storage_name_prefix}satfstate"
-    resource_group_name  = "${local.resource_prefix}-core-rg"
-    container_name       = "${var.location_abbreviation}${var.app_abbreviation}tfstatecontainer"
-    environment          = var.az_environment
-    key                  = "${var.location_abbreviation}-ad.tfstate"
-  }
-}
-```
+- Re-run `terraform apply` on the bastion folder to add the new PIP to the bastion NSG.
 
-## Deployment Steps
+- Re-run `terraform apply` on the key-vault, security-core, and region-setup folder to add the new admin's GUID to the Admin roles
 
-This module can be called as outlined below.
+## Setting Cloud Provider
 
-- Change directories to the `reponame` directory.
-- From the `terraform/azure/reponame` directory run `terraform init`.
-- Run `terraform plan` to review the resources being created.
-- If everything looks correct in the plan output, run `terraform apply`.
+For Azure Government cloud
 
-## Usage
+`az cloud set --name AzureUSGovernment`
 
-Include example for how to call the module below with generic variables
+By default, AZCLI is configured for commercial cloud. If you need to switch back from another selection:
+
+`az cloud set --name AzureCloud`
+
+Log into the Azure Tenant with your Azure Active Directory (AAD) credentials.
+
+`az login`
+
+Follow the instructions in the terminal to log in via web portal with your credentials.
+
+Upon a successful login you should see output similar to this.
 
 ```hcl
-provider "azurerm" {
-  features {}
-}
-
-module "core_sa" {
-  source                    = "github.com/Coalfire-CF/ACE-Azure-StorageAccount?ref=vX.X.X"
-  name                       = "${replace(var.resource_prefix, "-", "")}tfstatesa"
-  resource_group_name        = azurerm_resource_group.management.name
-  location                   = var.location
-  account_kind               = "StorageV2"
-  ip_rules                   = var.ip_for_remote_access
-  diag_log_analytics_id      = azurerm_log_analytics_workspace.core-la.id
-  virtual_network_subnet_ids = var.fw_virtual_network_subnet_ids
-  tags                       = var.tags
-
-  #OPTIONAL
-  public_network_access_enabled = true
-  enable_customer_managed_key   = true
-  cmk_key_vault_id              = module.core_kv.id
-  cmk_key_vault_key_name        = azurerm_key_vault_key.tfstate-cmk.name
-  storage_containers = [
-    "tfstate"
-  ]
-  storage_shares = [
-    {
-      name = "test"
-      quota = 500
+[
+  {
+    "cloudName": "AzureCloud",
+    "id": "REDACTED",
+    "isDefault": true,
+    "name": "Azure subscription 1",
+    "state": "Enabled",
+    "tenantId": "REDACTED",
+    "user": {
+      "name": "engineer1@example.com",
+      "type": "user"
     }
-  ]
-  lifecycle_policies = [
-    {
-      prefix_match = ["tfstate"]
-      version = {
-        delete_after_days_since_creation = 90
-      }
-    }
-  ]
-}
+  }
+]
 ```
+
+Set a specific subscription
+
+`az account set --subscription {GUID}`
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements

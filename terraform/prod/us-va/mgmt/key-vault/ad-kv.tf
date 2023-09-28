@@ -1,5 +1,5 @@
 module "ad_kv" {
-  source = "github.com/Coalfire-CF/ACE-Azure-KeyVault"
+  source = "github.com/Coalfire-CF/terraform-azurerm-key-vault"
 
   kv_name                         = "${local.resource_prefix}-ad-kv"
   resource_group_name             = data.terraform_remote_state.setup.outputs.key_vault_rg_name

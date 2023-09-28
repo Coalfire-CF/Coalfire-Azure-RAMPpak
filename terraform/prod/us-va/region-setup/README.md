@@ -66,7 +66,7 @@ data "terraform_remote_state" "setup" {
     storage_account_name = "${local.storage_name_prefix}satfstate"
     resource_group_name  = "${local.resource_prefix}-core-rg"
     container_name       = "${var.location_abbreviation}${var.app_abbreviation}tfstatecontainer"
-    var.az_environment
+    environment          = var.az_environment
     key                  = "${var.location_abbreviation}-region-setup.tfstate"
   }
 }
@@ -98,43 +98,3 @@ After the `mgmt/mgmt-network` is created, uncomment this `sa_virtual_network_sub
 ## Next steps
 
 Management VNet (terraform/prod/{region}/mgmt/mgmt-network)
-
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
-| subscription_id | The Azure subscription ID resources are being deployed into | `string` | n/a | yes |
-| location | The Azure location/region to create things in | `string` | n/a | yes |
-| location_abbreviation | The default Azure location/region to create resources in | `string` | n/a | yes |
-| resource_prefix | The prefix for the storage account names | `string` | n/a | yes |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| rhel7_id | ID of the rhel image from image gallery |
-| windows_golden_id | ID of the windows image from image gallery |
-| windows_ad_id | ID of the AD windows image from the image gallery |
-| windows_ca_id | ID of the CA windows image from the image gallery |
-| management_rg_name | Management Resource Group Name |
-| network_rg_name | Networking Resource Group Name |
-| key_vault_rg_name | Key Vault Resource Group Name |
-| key_vault_rg_id | Key Vault Resource Group ID |
-| application_rg_name | Application Resource Group Name |
-| storage_account_ars_id | Azure Site Recovery Storage Account ID |
-| storage_account_ars_name | Azure Site Recovery Storage Account Name |
-| storage_account_flowlogs_id | NSG Flow Logs Storage Account ID |
-| storage_account_flowlogs_name | NSG Flow Logs Storage Account Name |
-| storage_account_install_id | Install files Storage Account ID |
-| storage_account_install_name | Install files Storage Account Name |
-| storage_account_docs_id | FedRAMP Docs and Artifacts Storage Account ID |
-| storage_account_docs_name | FedRAMP Docs and Artifacts Storage Account Name |
-| installs_container_id | SA container for Install Files ID |
-| installs_container_name | SA container for Install Files Name |
-| storage_account_vmdiag_id | VM Diagnostic Data Storage Account ID |
-| storage_account_vmdiag_name | VM Diagnostic Data Storage Account Name |
-| storage_account_vmdiag_sas | VM Diagnostic Storage Account SAS token |
-| shellscripts_container_id | SA container for shellscripts ID |
-| vmdiag_endpoint | Storage account where VM Diag logs are stored |
-| network_watcher_name | Name for Azure Network Watcher Service |
-| additional_resource_groups | Map with additional resource groups with format `{name = id}` |

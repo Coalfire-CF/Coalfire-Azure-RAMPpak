@@ -37,6 +37,8 @@ Once the code updates are completed and the `core.tf` file is updated with the a
 
 Once a successful `apply` is completed. You will need to migrate the terraform state from the local one to the remote storage account. This is required to ensure that the state is not lost if the local machine is destroyed and for cross collaboration between engineers.
 
+**NOTE**: If you receive a `Code="ResourceGroupNotFound"` error run `terraform apply` again. 
+
 Migration steps:
 
 Modify the `tstate.tf` file to include the appropriate information for the storage account in this environment. Sample below.

@@ -13,7 +13,7 @@ This deploys the Application Plane Vnet and it's subnets
 
 - Update the name and number of subnets as needed in the `subnet_addrs` module.
 - If you need to add or remove Service Endpoints, do so in the `subnet_service_endpoints` block. See <https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet> for Service Endpoint options.
-- For the initial deployment, ensure the `dns_servers` line is commented out until the Domain controllers are online. Once the DC's are online uncomment and rerun an `apply`.
+
 `tstate.tf` Update to the appropriate version and storage accounts, see sample
 
 ``` hcl
@@ -26,11 +26,11 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name  = "usgv-mp-lp-core-rg"
-    storage_account_name = "usgvmplpsatfstate"
-    container_name       = "usgvlptfstatecontainer"
-    var.az_environment
-    key                  = "usgv-app-network.tfstate"
+    resource_group_name  = "ex-prod-va-mp-core-rg"
+    storage_account_name = "exprodvampsatfstate"
+    container_name       = "vaextfstatecontainer"
+    environment          = "usgovernment"
+    key                  = "va-app-network.tfstate"
   }
 }
 ```

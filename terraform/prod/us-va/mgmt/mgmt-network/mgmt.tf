@@ -47,7 +47,7 @@ module "subnet_addrs" {
 }
 
 module "mgmt-vnet" {
-  source              = "github.com/Coalfire-CF/ACE-Azure-Vnet?ref=module"
+  source              = "github.com/Coalfire-CF/terraform-azurerm-vnet"
   vnet_name           = "${local.resource_prefix}-network-vnet"
   resource_group_name = data.terraform_remote_state.setup.outputs.network_rg_name
   address_space       = [module.subnet_addrs.base_cidr_block]

@@ -47,16 +47,3 @@ module "app-vnet" {
   }
 }
 
-
-# data "azurerm_monitor_diagnostic_categories" "diag_options" {
-#   resource_id = module.app-vnet.vnet_id
-# }
-
-# module "app_vnet_diag" {
-#   source                = "../../../../modules/coalfire-diagnostic"
-#   diag_name             = "app_vnet_diag"
-#   resource_id           = module.app-vnet.vnet_id
-#   diag_log_analytics_id = data.terraform_remote_state.core.outputs.core_la_id
-#   diag_logs             = data.azurerm_monitor_diagnostic_categories.diag_options.logs
-#   diag_metrics          = data.azurerm_monitor_diagnostic_categories.diag_options.metrics
-# }

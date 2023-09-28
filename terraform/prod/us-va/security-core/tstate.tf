@@ -18,6 +18,6 @@ terraform {
   #   storage_account_name = "exprodvampsatfstate"
   #   container_name       = "vaextfstatecontainer"
   #   environment          = "usgovernment"
-  #   key                  = "va-ex-security-core.tfstate"
+  #   key                  = "va-security-core.tfstate"
   # }
 }

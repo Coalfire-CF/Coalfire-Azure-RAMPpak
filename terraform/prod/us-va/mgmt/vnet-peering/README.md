@@ -19,18 +19,18 @@ This file should require no changes unless
 
 ``` hcl
 terraform {
-  required_version = ">= 1.1.2"
+  required_version = "~>1.5.0"
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 2.91.0"
+      version = "~> 3.61.0"
     }
   }
   backend "azurerm" {
-    resource_group_name  = "v1-prod-va-mp-core-rg"
-    storage_account_name = "v1prodvampsatfstate"
-    container_name       = "vav1tfstatecontainer"
-    var.az_environment
+    resource_group_name  = "ex-prod-va-mp-core-rg"
+    storage_account_name = "exprodvampsatfstate"
+    container_name       = "vaextfstatecontainer"
+    environment          = "usgovernment"
     key                  = "va-vnet-peering.tfstate"
   }
 }
@@ -56,7 +56,7 @@ data "terraform_remote_state" "usgv_peering" {
     storage_account_name = "${local.storage_name_prefix}satfstate"
     resource_group_name  = "${local.resource_prefix}-core-rg"
     container_name       = "${var.location_abbreviation}${var.app_abbreviation}tfstatecontainer"
-    var.az_environment
+    environment          = "usgovernment"
     key                  = "${var.location_abbreviation}-vnet-peering.tfstate"
   }
 }
@@ -70,8 +70,4 @@ data "terraform_remote_state" "usgv_peering" {
 
 ## Next Steps
 
-Key Vault Deployment (terraform/prod/{region}/mgmt/key-vault
-
-## Outputs
-
-N/A
+Key Vault Deployment `terraform/prod/{region}/mgmt/key-vault`

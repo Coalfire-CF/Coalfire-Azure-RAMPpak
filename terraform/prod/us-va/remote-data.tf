@@ -68,7 +68,7 @@
 #     resource_group_name  = "${local.resource_prefix}-core-rg"
 #     container_name       = "${var.location_abbreviation}${var.app_abbreviation}tfstatecontainer"
 #     environment          = var.az_environment
-#     key                  = "${var.location_abbreviation}-keyvault.tfstate"
+#     key                  = "${var.location_abbreviation}-key-vault.tfstate"
 #   }
 # }
 

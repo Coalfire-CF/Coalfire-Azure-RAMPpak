@@ -15,10 +15,18 @@ module "bastion1" {
   regional_tags                 = var.regional_tags
   global_tags                   = var.global_tags
   storage_account_vmdiag_name   = data.terraform_remote_state.setup.outputs.storage_account_vmdiag_name
+
+  source_image_reference = {
+    publisher = "center-for-internet-security-inc"
+    offer     = "cis-win-2019-stig"
+    sku       = "cis-win-2019-stig"
+    version   = "latest"
+  }
+
   vm_tags = {
-    OS           = "Windows_STIG_2019"
-    Function     = "Bastion"
-    Plane        = "Management"
+    OS       = "Windows_STIG_2019"
+    Function = "Bastion"
+    Plane    = "Management"
   }
 }
 

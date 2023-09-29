@@ -11,8 +11,8 @@ module "win_bastion_nsg" {
   diag_log_analytics_id             = data.terraform_remote_state.core.outputs.core_la_id
   diag_log_analytics_workspace_id   = data.terraform_remote_state.core.outputs.core_la_workspace_id
 
-  regional_tags                     = var.regional_tags
-  global_tags                       = var.global_tags
+  regional_tags = var.regional_tags
+  global_tags   = var.global_tags
 
   custom_rules = [
     {

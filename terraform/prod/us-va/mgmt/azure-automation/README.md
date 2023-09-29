@@ -1,12 +1,8 @@
 # Azure Automation Deployment
 
-This folder creates an Azure Automation Account, uploads the 'Set-VMRunningState.ps1' (located in /shellscripts/windows) to the account as a runbook.
+This folder creates an Azure Automation Account.
 
-This is for auto startup/shutdown of VM's based on tags. Time provided should be in EST.
-
-The Automation account is also used for host maintenance/upgrades and DSC deployments.  
-
-CMS will use this Automation Account to update Windows and Linux VMs via Update Management.  They will have to develop an update schedule with the client based off of agreed upon downtimes.
+The Automation account is used for host maintenance/upgrades and DSC deployments.
 
 ## Dependencies
 
@@ -19,18 +15,18 @@ CMS will use this Automation Account to update Windows and Linux VMs via Update 
 
 ``` hcl
 terraform {
-  required_version = ">= 1.1.7"
+  required_version = "~>1.5.0"
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "= 3.45.0"
+      version = "3.61.0"
     }
   }
   backend "azurerm" {
-    resource_group_name  = "v1-prod-va-mp-core-rg"
-    storage_account_name = "v1prodvampsatfstate"
-    container_name       = "vav1tfstatecontainer"
-    var.az_environment
+    resource_group_name  = "ex-prod-va-mp-core-rg"
+    storage_account_name = "exprodvampsatfstate"
+    container_name       = "vaextfstatecontainer"
+    environment          = "usgovernment"
     key                  = "va-az-automation.tfstate"
   }
 }
@@ -70,8 +66,6 @@ Run `terraform apply` again to update the remote state file in Azure.
 
 After a successful deployment of the Azure Automation account Update Management will need to be turned on for all virtual machines (both Linux and Windows).  This is currently only possible via the portal until [azurerm 4.0.0](https://github.com/hashicorp/terraform-provider-azurerm/issues/2812) comes out.
 
-CMS will have to develop an update schedule with the client based upon the agreed upon downtimes.
-
 Deployment Steps:
 
 1. Go to the Automation Account in the portal
@@ -80,34 +74,12 @@ Deployment Steps:
 4. Click 'Manage Computers'
 5. Check the box to 'Enable on all available and future machines'
 
-Update Management Configuration
-![UpdateManagement](https://github.com/Coalfire-CF/trend-micro-vision-one/blob/vm_updates/terraform/prod/us-va/mgmt/azure-automation/UpdateManagement.png?raw=true)
-
 ## Created Resources
 
 | Resource | Description |
 |------|-------------|
-| Automation Account | Automation account for running scripts, DSC policies and patching |
-| Runbook | Set-VMRunningState PowerShell script |
-
-## Stopinator
-
-VM's need to have the appropriate tags
-
-Stopinator: true
-AutoShutdown: (24hr time)
-AutoStartup: (24hr time)
+| Automation Account | Automation account for patching |
 
 ## Next steps
 
-Active Directory Automation (azure/terraform/prod/us-va/mgmt/aa-ad)
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| usgv_aa_name | Name of the Automation Account |
-| usgv_aa_id | ID of the Automation Account |
-| usgv_aa_principal_id | The Principal ID associated with the Managed Service Identity of the Automation Account |
-| usgv_aa_dsc_endpoint | DSC Server endpoint of the Automation Account |
-| usgv_aa_primary_registration | Registration Key for Automation Account |
+Bastions `terraform/prod/us-va/mgmt/bastion`

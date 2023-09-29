@@ -13,18 +13,18 @@ Sets up an Azure recovery vault.
 
 ``` hcl
 terraform {
-  required_version = ">= 1.1.7"
+  required_version = "~>1.5.0"
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.1.0"
+      version = "3.61.0"
     }
   }
   backend "azurerm" {
-    resource_group_name  = "v1-prod-va-mp-core-rg"
-    storage_account_name = "v1prodvampsatfstate"
-    container_name       = "vav1tfstatecontainer"
-    var.az_environment
+    resource_group_name  = "ex-prod-va-mp-core-rg"
+    storage_account_name = "exprodvampsatfstate"
+    container_name       = "vaextfstatecontainer"
+    environment          = "usgovernment"
     key                  = "va-backup.tfstate"
   }
 }

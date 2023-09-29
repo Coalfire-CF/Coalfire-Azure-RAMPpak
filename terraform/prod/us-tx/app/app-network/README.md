@@ -1,8 +1,1 @@
-# Deploying
-
-## Prerequisites
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
+# Placeholder folder/file structure for DR region app network

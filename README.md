@@ -18,10 +18,10 @@ Learn more at [Coalfire OpenSource](https://coalfire.com/opensource).
 
 | Directory | Purpose |
 | --------- | ------- |
-| `shellscripts/` | Deployment and VM Extension Scripts |
+| `shellscripts/` | Deployment and VM Extension scripts |
 | `terraform/prod/us-tx/` | Disaster Recovery region terraform files |
 | `terraform/prod/us-va/` | Primary region terraform files |
-| `terraform/prod/global-vars.tf` | Global Variables |
+| `terraform/prod/global-vars.tf` | Global variables |
 | `terraform/prod/us-va/app/` | Application plane terraform files |
 | `terraform/prod/us-va/mgmt/` | Management plane terraform files |
 | `terraform/prod/us-va/region-setup/` | Management plane `region-setup` terraform files |
@@ -51,8 +51,9 @@ Learn more at [Coalfire OpenSource](https://coalfire.com/opensource).
 6. Management/Application VNet Peering (terraform/prod/us-va/mgmt/vnet-peering)
 7. Key Vaults (terraform/prod/us-va/mgmt/key-vault)
 8. Azure Automation (terraform/prod/us-va/mgmt/azure-automation)
-9. Bastions (terraform/prod/us-va/mgmt/bastion)
+9. Sentinel (terraform/prod/us-va/mgmt/sentinel)
 10. Other tooling/Application Plane
+11. Disaster Recovery Region (terraform/prod/us-tx/)
 
 ## Deployment Configurations
 

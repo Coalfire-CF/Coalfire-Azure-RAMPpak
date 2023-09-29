@@ -58,7 +58,7 @@ resource "azurerm_backup_policy_vm" "default_policy" {
 }
 
 module "diag" {
-  source                = "../../../modules/coalfire-diagnostic/"
+  source                = "github.com/Coalfire-CF/terraform-azurerm-diagnostics"
   diag_log_analytics_id = data.terraform_remote_state.core.outputs.core_la_id
   resource_id           = azurerm_recovery_services_vault.ars_vault.id
   resource_type         = "rsv"

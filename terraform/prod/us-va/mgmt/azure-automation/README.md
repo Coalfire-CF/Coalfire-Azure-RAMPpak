@@ -82,4 +82,4 @@ Deployment Steps:
 
 ## Next steps
 
-Sentinel `terraform/prod/us-va/mgmt/sentinel`
+Bastion `terraform/prod/us-va/mgmt/bastion`

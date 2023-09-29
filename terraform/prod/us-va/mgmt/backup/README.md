@@ -49,7 +49,7 @@ data "terraform_remote_state" "usgv-backup" {
     storage_account_name = "${local.storage_name_prefix}satfstate"
     resource_group_name  = "${local.resource_prefix}-core-rg"
     container_name       = "${var.location_abbreviation}${var.app_abbreviation}tfstatecontainer"
-    var.az_environment
+    environment          = var.az_environment
     key                  = "${var.location_abbreviation}-backup.tfstate"
   }
 }
@@ -69,14 +69,4 @@ The policy will only be applied to virtual machines that have the tag `BackupPol
 
 ## Next steps
 
-None
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| usgv_mgmt_recovery_vault_id | The ID of the Recovery Services Vault |
-| usgv_mgmt_backupvm_default_policy_name | The Name of the VM backup default policy |
-| usgv_mgmt_backupvm_default_policy_id | The ID of the VM backup default policy |
-| usgv_mgmt_backupvm_tag_key | Tag key to attach backup vm default policy. In other words, VMs with this key/value tag will be backed up by the default backup vm policy | 
-| usgv_mgmt_backupvm_tag_value | Tag value to attach backup vm default policy. In other words, VMs with this key/value tag will be backed up by the default backup vm policy | 
+Sentinel `terraform/prod/us-va/mgmt/sentinel`

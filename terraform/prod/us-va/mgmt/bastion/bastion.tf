@@ -13,7 +13,7 @@ module "bastion1" {
   vm_diag_sa                    = data.terraform_remote_state.setup.outputs.vmdiag_endpoint
   storage_account_vmdiag_name   = data.terraform_remote_state.setup.outputs.storage_account_vmdiag_name
   kv_id                         = data.terraform_remote_state.core.outputs.core_kv_id
-  trusted_launch                = false # For now, we are not using trusted launch. Fails with the CIS image.
+  trusted_launch                = false # For now, we are not using trusted launch. Fails with the CIS marketplace image.
 
   regional_tags                 = var.regional_tags
   global_tags                   = var.global_tags
@@ -23,6 +23,12 @@ module "bastion1" {
     offer     = "cis-win-2019-stig"
     sku       = "cis-win-2019-stig"
     version   = "latest"
+  }
+
+  plan = {
+    publisher = "center-for-internet-security-inc"
+    name      = "cis-win-2019-stig"
+    product   = "cis-win-2019-stig"
   }
 
   vm_tags = {

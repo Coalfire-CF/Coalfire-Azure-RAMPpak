@@ -13,6 +13,7 @@ module "bastion1" {
   vm_diag_sa                    = data.terraform_remote_state.setup.outputs.vmdiag_endpoint
   storage_account_vmdiag_name   = data.terraform_remote_state.setup.outputs.storage_account_vmdiag_name
   kv_id                         = data.terraform_remote_state.core.outputs.core_kv_id
+  trusted_launch                = false # For now, we are not using trusted launch. Fails with the CIS image.
 
   regional_tags                 = var.regional_tags
   global_tags                   = var.global_tags

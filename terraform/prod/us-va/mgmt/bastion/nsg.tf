@@ -2,7 +2,7 @@ module "win_bastion_nsg" {
   source = "github.com/Coalfire-CF/terraform-azurerm-nsg?ref=OC"
 
   location                          = var.location
-  resource_group_name               = data.terraform_remote_state.core.outputs.core_rg_name
+  resource_group_name               = data.terraform_remote_state.setup.outputs.network_rg_name
   security_group_name               = "${local.vm_name_prefix}-winbastion"
   storage_account_flowlogs_id       = data.terraform_remote_state.setup.outputs.storage_account_flowlogs_id
   network_watcher_name              = data.terraform_remote_state.setup.outputs.network_watcher_name

@@ -7,7 +7,7 @@ module "bastion1" {
   location                      = var.location
   resource_group_name           = data.terraform_remote_state.core.outputs.core_rg_name
   size                          = "Standard_DS2_v2"
-  enable_public_ip              = false
+  enable_public_ip              = true
   subnet_id                     = data.terraform_remote_state.usgv_mgmt_vnet.outputs.usgv_mgmt_vnet_subnet_ids["${local.resource_prefix}-bastion-sn-1"]
   private_ip_address_allocation = "Dynamic"
   vm_diag_sa                    = data.terraform_remote_state.setup.outputs.vmdiag_endpoint

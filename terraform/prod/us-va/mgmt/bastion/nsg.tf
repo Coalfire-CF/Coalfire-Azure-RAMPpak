@@ -27,3 +27,8 @@ module "win_bastion_nsg" {
     }
   ]
 }
+
+resource "azurerm_subnet_network_security_group_association" "win_bastion_nsg_association" {
+  subnet_id                 = data.terraform_remote_state.usgv_mgmt_vnet.outputs.usgv_mgmt_vnet_subnet_ids["${local.resource_prefix}-bastion-sn-1"]
+  network_security_group_id = module.win_bastion_nsg.network_security_group_id
+}

@@ -88,11 +88,6 @@ After the `mgmt/mgmt-network` is created, uncomment this `sa_virtual_network_sub
 | Storage Account | Install files |
 | Storage Account | VM Diagnostic |
 | Storage Account | FedRamp Documents and Artifacts |
-| Image Gallery | Shared Image Gallery for future Images |
-| Image Definition | RHEL7 golden image definition |
-| Image Definition | Windows 2019 golden image definition |
-| Image Definition | Windows AD image definition |
-| Image Definition | Windows CA image definition |
 | Network Watcher | Regional Network Watcher |
 
 ## Next steps

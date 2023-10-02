@@ -6,6 +6,10 @@ Coalfire created reference architecture for FedRAMP Azure builds. This repositor
 
 Learn more at [Coalfire OpenSource](https://coalfire.com/opensource).
 
+## Architecture
+
+![Architecture](Coalfire-Azure-RAMPpak.png)
+
 ## Dependencies
 
 - Azure Commercial or Government Subscription

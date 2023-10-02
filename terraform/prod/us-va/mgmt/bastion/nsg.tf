@@ -3,10 +3,10 @@ module "win_bastion_nsg" {
 
   location                          = var.location
   resource_group_name               = data.terraform_remote_state.core.outputs.core_rg_name
-  security_group_name               = "${data.terraform_remote_state.mgmt_naming.outputs.network_security_group}-winbastion"
+  security_group_name               = "${local.vm_name_prefix}-winbastion"
   storage_account_flowlogs_id       = data.terraform_remote_state.setup.outputs.storage_account_flowlogs_id
   network_watcher_name              = data.terraform_remote_state.setup.outputs.network_watcher_name
-  network_watcher_flow_log_name     = "${data.terraform_remote_state.mgmt_naming.outputs.network_watcher}-windowsbastionflowlogs"
+  network_watcher_flow_log_name     = "${data.terraform_remote_state.setup.outputs.network_watcher_name}-windowsbastionflowlogs"
   network_watcher_flow_log_location = var.location
   diag_log_analytics_id             = data.terraform_remote_state.core.outputs.core_la_id
   diag_log_analytics_workspace_id   = data.terraform_remote_state.core.outputs.core_la_workspace_id

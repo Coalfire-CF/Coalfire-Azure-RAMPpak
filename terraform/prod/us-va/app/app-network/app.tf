@@ -38,8 +38,6 @@ module "app-vnet" {
   }
 
   diag_log_analytics_id = data.terraform_remote_state.core.outputs.core_la_id
-  #storage_account_flowlogs_id     = data.terraform_remote_state.setup.outputs.storage_account_flowlogs_id
-  #network_watcher_name            = data.terraform_remote_state.setup.outputs.network_watcher_name
 
   #Attach Vnet to Private DNS zone
   private_dns_zone_id = data.terraform_remote_state.core.outputs.core_private_dns_zone_id.0

@@ -1,5 +1,5 @@
 module "va-aa" {
-  source                     = "github.com/Coalfire-CF/terraform-azurerm-automation-account?ref=OC"
+  source                     = "github.com/Coalfire-CF/terraform-azurerm-automation-account"
   automation_account_name    = "${local.resource_prefix}-aa"
   resource_group_name        = data.terraform_remote_state.setup.outputs.management_rg_name
   location                   = var.location

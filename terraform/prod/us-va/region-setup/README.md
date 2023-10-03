@@ -72,7 +72,7 @@ data "terraform_remote_state" "setup" {
 }
 ```
 
-After the `mgmt/mgmt-network` is created, uncomment this `sa_virtual_network_subnet_ids` argument, and rerun `terraform apply`
+After the `mgmt/mgmt-network` is created, uncomment this `firewall_vnet_subnet_ids` argument, and rerun `terraform apply`
 
 ## Created Resources
 

@@ -22,6 +22,7 @@ module "setup" {
   
   # uncomment the following line when the mgmt-network is created
   #firewall_vnet_subnet_ids = values(data.terraform_remote_state.usgv_mgmt_vnet.outputs.usgv_mgmt_vnet_subnet_ids) #Uncomment and rerun terraform apply after the mgmt-network is created
+  
   additional_resource_groups = [
     "${local.resource_prefix}-identity-rg"
   ]

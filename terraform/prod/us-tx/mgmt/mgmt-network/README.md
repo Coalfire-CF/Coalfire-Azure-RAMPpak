@@ -1,0 +1,1 @@
+# Placeholder folder/file structure for DR region management network

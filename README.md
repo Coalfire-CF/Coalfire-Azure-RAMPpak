@@ -1,10 +1,12 @@
 ![Coalfire](coalfire_logo.png)
 
-# Coalfire-Azure-RAMPpak
+# Coalfire-Azure-RAMP/pak
 
 Coalfire created reference architecture for FedRAMP Azure builds. This repository is used as a parent directory to deploy `Coalfire-CF/terraform-azurerm-<service>` modules.
 
 Learn more at [Coalfire OpenSource](https://coalfire.com/opensource).
+
+[Get our SSP Templates and Reference Architecture Design Document Template](https://www.coalfire.com/services/fedramp/ramp-pak-documentation)
 
 ## Architecture
 
@@ -139,17 +141,11 @@ No outputs.
 
 ## Contributing
 
-[Relative or absolute link to contributing.md](CONTRIBUTING.md)
-
+If you're interested in contributing to our projects, please review the [Contributing Guidelines](CONTRIBUTING.md). And send an email to [our team](contributing@coalfire.com) to receive a copy of our CLA and start the onboarding process.
 
 ## License
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/license/mit/)
-
-
-## Coalfire Pages
-
-[Absolute link to any relevant Coalfire Pages](https://coalfire.com/)
 
 ### Copyright
 

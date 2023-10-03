@@ -1,1 +1,0 @@
-# Placeholder folder/file structure for DR region app network

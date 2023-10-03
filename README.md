@@ -68,7 +68,7 @@ Each module, e.g. `region-setup`, has a README file that provides deployment ste
 
 ## Modifications when new Admins are added
 
-- Add their PIP or use the Coalfire VPN to access and deploy resources, otherwise the user cannot access Key Vaults, storage account with the state files or the bastion hosts.
+- Add their PIP or use VPN IP CIDR to access and deploy resources, otherwise the user cannot access Key Vaults, storage account with the state files or the bastion hosts.
 
 - Re-run `terraform apply` on the bastion folder to add the new PIP to the bastion NSG.
 

@@ -26,7 +26,4 @@ module "core" {
     "privatelink.file.core.usgovcloudapi.net",
     "privatelink.postgres.database.usgovcloudapi.net"
   ]
-
-  # uncomment and rerun terraform apply after the networks are created if you're using FWs
-  #fw_virtual_network_subnet_ids = data.terraform_remote_state.usgv_mgmt_vnet.outputs.usgv_mgmt_vnet_subnet_ids["${local.resource_prefix}-bastion-sn-1"] #Uncomment and rerun terraform apply after the mgmt-network is created
 }

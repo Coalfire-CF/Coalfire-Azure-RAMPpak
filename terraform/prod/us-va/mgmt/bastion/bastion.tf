@@ -1,6 +1,6 @@
 ## Windows
 module "bastion1" {
-  source = "github.com/Coalfire-CF/terraform-azurerm-vm-windows?ref=OC"
+  source = "github.com/Coalfire-CF/terraform-azurerm-vm-windows"
 
   vm_name                       = "${local.vm_name_prefix}ba1"
   vm_admin_username             = var.vm_admin_username

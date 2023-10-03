@@ -1,5 +1,5 @@
 module "win_bastion_nsg" {
-  source = "github.com/Coalfire-CF/terraform-azurerm-nsg?ref=OC"
+  source = "github.com/Coalfire-CF/terraform-azurerm-nsg"
 
   location                          = var.location
   resource_group_name               = data.terraform_remote_state.setup.outputs.network_rg_name

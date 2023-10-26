@@ -15,8 +15,8 @@ module "bastion1" {
   kv_id                         = data.terraform_remote_state.core.outputs.core_kv_id
   trusted_launch                = false # For now, we are not using trusted launch. Fails with the CIS marketplace image.
 
-  regional_tags                 = var.regional_tags
-  global_tags                   = var.global_tags
+  regional_tags = var.regional_tags
+  global_tags   = var.global_tags
 
   source_image_reference = {
     publisher = "center-for-internet-security-inc"

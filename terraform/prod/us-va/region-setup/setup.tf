@@ -19,10 +19,10 @@ module "setup" {
   core_kv_id            = data.terraform_remote_state.core.outputs.core_kv_id
   diag_log_analytics_id = data.terraform_remote_state.core.outputs.core_la_id
   admin_principal_ids   = var.admin_principal_ids
-  
+
   # uncomment the following line when the mgmt-network is created
   #firewall_vnet_subnet_ids = values(data.terraform_remote_state.usgv_mgmt_vnet.outputs.usgv_mgmt_vnet_subnet_ids) #Uncomment and rerun terraform apply after the mgmt-network is created
-  
+
   additional_resource_groups = [
     "${local.resource_prefix}-identity-rg"
   ]

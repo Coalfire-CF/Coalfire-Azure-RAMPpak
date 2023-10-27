@@ -7,7 +7,7 @@ module "sentinel" {
   log_analytics_workspace_id   = data.terraform_remote_state.core.outputs.core_la_workspace_id
   log_analytics_workspace_name = data.terraform_remote_state.core.outputs.core_la_workspace_name
 
-  global_tags   = var.global_tags
+  global_tags = var.global_tags
   regional_tags = merge({
     Function    = "SEIM"
     Plane       = "Management"

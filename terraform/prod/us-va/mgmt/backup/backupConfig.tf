@@ -3,6 +3,7 @@ resource "azurerm_recovery_services_vault" "ars_vault" {
   location            = var.location
   resource_group_name = data.terraform_remote_state.setup.outputs.management_rg_name
   sku                 = "Standard"
+}
 
 resource "azurerm_backup_container_storage_account" "container" {
   resource_group_name = data.terraform_remote_state.setup.outputs.management_rg_name

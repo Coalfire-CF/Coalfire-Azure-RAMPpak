@@ -24,7 +24,7 @@ resource "azurerm_backup_policy_vm" "default_policy" {
   }
 
   retention_daily {
-    count = 7
+    count = 14
   }
 
   retention_weekly {

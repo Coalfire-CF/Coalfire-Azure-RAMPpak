@@ -87,7 +87,6 @@ module "core" {
   global_tags             = var.global_tags
   core_rg_name            = "${local.resource_prefix}-core-rg"
   cidrs_for_remote_access = var.cidrs_for_remote_access
-  ip_for_remote_access    = var.ip_for_remote_access
   admin_principal_ids     = var.admin_principal_ids
   enable_diag_logs        = true
   enable_aad_logs         = true

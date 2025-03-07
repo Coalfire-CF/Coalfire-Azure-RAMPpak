@@ -1,10 +1,10 @@
 provider "azurerm" {
   features {}
 
-  subscription_id            = var.subscription_id
-  tenant_id                  = var.tenant_id
-  environment                = var.az_environment
-  skip_provider_registration = true
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
+  environment     = var.az_environment
+  # skip_provider_registration = true # Hashicorp: This property is deprecated and will be removed in v5.0 of the AzureRM provider
 }
 
 variable "location" {

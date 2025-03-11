@@ -44,17 +44,11 @@ In the `setup.tf` file:
 
 ## Deployment steps
 
+#### Step 1 - Remove default resources (if applicable)
 Sign into the portal and delete the default NetworkWatcher resource group and resources.
 
+#### Step 2 - Prepare terraform directory
 Change directory to the `region-setup` folder in the primary region
-
-Run `terraform init` to initialize modules and remote state.
-
-Run `terraform plan` and evaluate the execution plan.
-
-Run `terraform apply` to deploy.
-
-**Note**: you may need to re-run the apply due to delays in propagation of Key Vault permissions. You should be able to re-run after a few minutes without issues.
 
 Update the `remote-data.tf` file to add the region state key.  This pulls down the remote variables from the state file. See sample below:
 
@@ -71,6 +65,17 @@ data "terraform_remote_state" "setup" {
   }
 }
 ```
+
+#### Step 4 - Initialize terraform and apply
+Run `terraform init` to initialize modules and remote state.
+
+Run `terraform plan` and evaluate the execution plan.
+
+If you are satisfied with the plan output, run `terraform apply` to deploy.
+
+## Additional notes
+
+The resources created by `region-setup` are dependent upon the Azure Key Vault permissions created by `security-core`. Since these permissions can take some time to propagate, it is recommended to wait approximately 15-20 minutes after `security-core` is deployed before running `region-setup`. If after waiting, you still encounter errors related to KV permissions, you may wait a few minutes and re-run `terraform apply` in the `region-setup` any number of times until the issue resolves.
 
 After the `mgmt/mgmt-network` is created, uncomment this `firewall_vnet_subnet_ids` argument, and rerun `terraform apply`
 

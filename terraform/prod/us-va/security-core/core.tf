@@ -1,5 +1,5 @@
 module "core" {
-  source = "github.com/Coalfire-CF/ACE-Azure-SecurityCore"
+  source = "github.com/Coalfire-CF/ACE-Azure-SecurityCore?ref=v1.0.2"
 
   subscription_id         = var.subscription_id
   resource_prefix         = local.resource_prefix

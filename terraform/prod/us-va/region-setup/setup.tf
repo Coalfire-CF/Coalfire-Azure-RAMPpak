@@ -1,5 +1,5 @@
 module "setup" {
-  source = "github.com/Coalfire-CF/ACE-Azure-RegionSetup"
+  source = "github.com/Coalfire-CF/ACE-Azure-RegionSetup?ref=v1.0.1"
 
   subscription_id       = var.subscription_id
   location_abbreviation = var.location_abbreviation

@@ -6,10 +6,10 @@ module "setup" {
   app_abbreviation           = var.app_abbreviation
   regional_tags              = var.regional_tags
   global_tags                = merge(var.global_tags, local.global_local_tags)
-  mgmt_rg_name               = "az-rg-mgmt-prod-va"
-  networking_rg_name         = "az-rg-net-prod-va"
-  app_rg_name                = "az-rg-app-prod-va"
-  key_vault_rg_name          = "az-rg-kv-prod-va"
+  mgmt_rg_name               = "${local.resource_prefix}-management-rg"
+  app_rg_name                = "${local.resource_prefix}-application-rg"
+  key_vault_rg_name          = "${local.resource_prefix}-keyvault-rg"
+  networking_rg_name         = "${local.resource_prefix}-networking-rg"
   additional_resource_groups = []
   sas_start_date             = "2025-03-11" # Today's date
   sas_end_date               = "2026-03-11" # 12 months from today

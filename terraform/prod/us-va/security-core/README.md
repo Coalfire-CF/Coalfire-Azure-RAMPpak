@@ -103,3 +103,19 @@ module "core" {
   ]
 }
 ```
+### Optional - custom resource names
+You may optionally supply custom names for all resources created by this module, to support various naming convention requirements: 
+
+```hcl
+module "core" {
+...
+  core_rg_name                     = "arbitrary-resource-group-name"
+  admin_ssh_key_name               = "arbitrary-ssh-key-name"
+  key_vault_name                   = "arbitrary-key-vault-name"
+  tfstate_storage_account_name     = "tfstatestorageaccountname"
+  law_queries_storage_account_name = "lawquerystorageaccountname"
+  log_analytics_workspace_name     = "arbitrary-log-analytics-workspace-name"
+...
+}
+
+```

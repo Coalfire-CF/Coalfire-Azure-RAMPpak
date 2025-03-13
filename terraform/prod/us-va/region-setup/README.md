@@ -42,6 +42,25 @@ In the `setup.tf` file:
 - update the SAS token expiration based on project schedule (if required)
 - update Resource Group names (if required)
 
+### Optional - custom resource names
+You may optionally supply custom names for all resources created by the region-setup module, to support various naming convention requirements: 
+
+```hcl
+module "setup" {
+...
+  compute_gallery_name           = "computegallery01"
+  cloudshell_storageaccount_name = "usgovcloudshellsa"
+  ars_storageaccount_name        = "usgovarssa"
+  docs_storageaccount_name       = "usgovdocssa" 
+  flowlogs_storageaccount_name   = "usgovflowlogssa"
+  installs_storageaccount_name   = "usgovinstallssa"
+  vmdiag_storageaccount_name     = "usgovdiagsa"
+  network_watcher_name           = "usgovnetworkwatcher"
+...
+}
+
+```
+
 ## Deployment steps
 
 #### Step 1 - Remove default resources (if applicable)

@@ -42,6 +42,42 @@ In the `setup.tf` file:
 - update the SAS token expiration based on project schedule (if required)
 - update Resource Group names (if required)
 
+### (Optional) Custom resource names
+In `setup.tf` you may optionally supply custom names for all resources created by this module, to support various naming convention requirements.
+
+
+```hcl
+module "setup" {
+...
+  compute_gallery_name           = "computegallery01"
+  cloudshell_storageaccount_name = "usgovcloudshellsa"
+  ars_storageaccount_name        = "usgovarssa"
+  docs_storageaccount_name       = "usgovdocssa" 
+  flowlogs_storageaccount_name   = "usgovflowlogssa"
+  installs_storageaccount_name   = "usgovinstallssa"
+  vmdiag_storageaccount_name     = "usgovdiagsa"
+  network_watcher_name           = "usgovnetworkwatcher"
+...
+}
+
+```
+
+### (Optional) File uploads
+Additionally, installation shellscripts and other files may be uploaded to blob storage by specifying their paths.
+
+In `setup.tf`, the `file_upload_paths` argument accepts a list of any number of paths. The file at each path will be uploaded to the `uploads` container in the installs storage account. In the example below, two scripts are uploaded:
+
+```hcl
+module "setup" {
+...
+ file_upload_paths = [
+    "../../../../shellscripts/linux/linux_join_ad.sh",
+    "../../../../shellscripts/linux/linux_monitor_agent.sh"
+  ]
+...
+}
+```
+
 ## Deployment steps
 
 #### Step 1 - Remove default resources (if applicable)

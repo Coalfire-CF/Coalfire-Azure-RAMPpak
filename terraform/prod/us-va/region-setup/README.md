@@ -89,14 +89,16 @@ Any number of VM image definitions may be bootstapped in the Azure Compute Galle
       identifier_publisher = "rhel"
       identifier_offer     = "LinuxServer"
       identifier_sku       = "RHEL8-10"
+      hyper_v_generation   = "V2"
     },
     {
       name                 = "win-server2022-golden"
       os_type              = "Windows"
       identifier_publisher = "microsoft"
       identifier_offer     = "WindowsServer"
-      identifier_sku       = "2022-datacenter-g2"
-    }
+      identifier_sku       = "RHEL8-10"
+      hyper_v_generation   = "V2"
+    },
   ]
 }
 ```

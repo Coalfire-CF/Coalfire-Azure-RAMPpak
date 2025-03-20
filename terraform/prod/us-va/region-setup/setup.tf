@@ -1,5 +1,5 @@
 module "setup" {
-  source = "github.com/Coalfire-CF/ACE-Azure-RegionSetup?ref=v1.0.6"
+  source = "github.com/Coalfire-CF/ACE-Azure-RegionSetup?ref=v1.0.7"
 
   location_abbreviation = var.location_abbreviation
   location              = var.location
@@ -51,6 +51,7 @@ module "setup" {
   #     identifier_publisher = "rhel"
   #     identifier_offer     = "LinuxServer"
   #     identifier_sku       = "RHEL8-10"
+  #     hyper_v_generation   = "V2"
   #   },
   #   {
   #     name                 = "win-server2022-golden"
@@ -58,6 +59,7 @@ module "setup" {
   #     identifier_publisher = "microsoft"
   #     identifier_offer     = "WindowsServer"
   #     identifier_sku       = "2022-datacenter-g2"
+  #     hyper_v_generation   = "V2"
   #   }
   # ]
 }

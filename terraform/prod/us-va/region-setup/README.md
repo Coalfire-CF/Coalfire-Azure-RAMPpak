@@ -77,38 +77,6 @@ module "setup" {
 ...
 }
 ```
-### (Optional) Azure Compute Gallery (Image Gallery) Image Definitions
-Any number of VM image definitions may be bootstapped in the Azure Compute Gallery by specifying `vm_image_definitions` as shown in the example below:
-```hcl
-  module "setup" {
-  ...
-  vm_image_definitions = [
-    {
-      name                 = "rhel-8-10-golden-stig"
-      os_type              = "Linux"
-      identifier_publisher = "rhel"
-      identifier_offer     = "LinuxServer"
-      identifier_sku       = "RHEL8-10"
-    },
-    {
-      name                 = "win-server2022-golden"
-      os_type              = "Windows"
-      identifier_publisher = "microsoft"
-      identifier_offer     = "WindowsServer"
-      identifier_sku       = "2022-datacenter-g2"
-    }
-  ]
-}
-```
-
-If `vm_image_definitions` is defined, the module will output a key-value map of all VM image definitions, where the key is the image name and the value is the image ID: 
-```hcl
-# Example Output
-vm_image_definitions = {
-  "rhel-8-10-golden-stig" = "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Compute/galleries/<gallery_name>/images/rhel-8-10-golden-stig"
-  "win-server2022-golden" = "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Compute/galleries/<gallery_name>/images/win-server2022-golden"
-}
-```
 
 ## Deployment steps
 

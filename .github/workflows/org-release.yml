@@ -8,4 +8,4 @@ on:
 
 jobs:
   create-release:
-    uses: Coalfire-CF/Actions/.github/workflows/org-release.yml@f1183271357ddaaa090a33c1b722133f874ef86d # v0.8.2
+    uses: Coalfire-CF/Actions/.github/workflows/org-release.yml@72d0360b99f80252dda40f6dfefc252f5a66edb3 # v0.10.0

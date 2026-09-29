@@ -7,3 +7,13 @@ updates:
       time: "04:52"
     labels:
       - "dependencies"
+    groups:
+      org-actions:
+        applies-to: version-updates
+        patterns: ["Coalfire-CF/*"]
+        update-types: ["minor", "patch"]
+      third-party:
+        applies-to: version-updates
+        patterns: ["*"]
+        exclude-patterns: ["Coalfire-CF/*"]
+        update-types: ["minor", "patch"]

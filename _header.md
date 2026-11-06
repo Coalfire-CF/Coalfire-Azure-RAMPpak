@@ -44,8 +44,8 @@ Template](https://www.coalfire.com/services/fedramp/ramp-pak-documentation)
 
 ## Deployment 
 
-1. Login to the azure cli, `az login`. You may have to change the cloud if you receive an error. `az cloud set --name
-   AzureUSGovernment`
+1. Login to the azure cli, `az login`. You may have to change the cloud if you receive an error.
+   `az cloud set --name AzureUSGovernment`
 2. Navigate to `terraform/prod/us-va/security-core` and run `terraform init` and `terraform plan`. If everything looks
    good run `terraform apply`.
 3. Navigate to `terraform/prod/us-va/region-setup` and run `terraform init` and `terraform plan`. If everything looks

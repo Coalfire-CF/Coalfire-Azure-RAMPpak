@@ -111,7 +111,7 @@ as shown in the example below:
 ```
 
 If `vm_image_definitions` is defined, the module will output a key-value map of all VM image definitions, where the key
-is the image name and the value is the image ID: 
+is the image name and the value is the image ID:
 
 ```hcl
 # Example Output
@@ -161,8 +161,8 @@ Since these permissions can take some time to propagate, it is recommended to wa
 permissions, you may wait a few minutes and re-run `terraform apply` in the `region-setup` any number of times until the
 issue resolves.
 
-After the `mgmt/mgmt-network` is created, uncomment this `firewall_vnet_subnet_ids` argument, and rerun `terraform
-apply`
+After the `mgmt/mgmt-network` is created, uncomment this `firewall_vnet_subnet_ids` argument, and rerun
+`terraform apply`
 
 ## Created Resources
 

@@ -45,7 +45,7 @@ collaboration between engineers.
 encountered when running `terraform apply` for the first time. This behavior was due to a number of resources
 referencing the Core Resource Group before it was created. ACE-Azure-SecurityCore v1.0.2 introduced dependency fixes
 which should resolve these errors. However, if you receive a `Code="ResourceGroupNotFound"` error, you may safely invoke
-`terraform apply` a second time to resolve it. 
+`terraform apply` a second time to resolve it.
 
 Migration steps:
 

@@ -4,11 +4,13 @@
 
 # Coalfire-Azure-RAMP/pak
 
-Coalfire created reference architecture for FedRAMP Azure builds. This repository is used as a parent directory to deploy `Coalfire-CF/terraform-azurerm-<service>` modules.
+Coalfire created reference architecture for FedRAMP Azure builds. This repository is used as a parent directory to
+deploy `Coalfire-CF/terraform-azurerm-<service>` modules.
 
 Learn more at [Coalfire OpenSource](https://coalfire.com/opensource).
 
-[Get our SSP Templates and Reference Architecture Design Document Template](https://www.coalfire.com/services/fedramp/ramp-pak-documentation)
+[Get our SSP Templates and Reference Architecture Design Document
+Template](https://www.coalfire.com/services/fedramp/ramp-pak-documentation)
 
 ## Architecture
 
@@ -44,9 +46,12 @@ Learn more at [Coalfire OpenSource](https://coalfire.com/opensource).
 
 ## Deployment
 
-1. Login to the azure cli, `az login`. You may have to change the cloud if you receive an error. `az cloud set --name AzureUSGovernment`
-2. Navigate to `terraform/prod/us-va/security-core` and run `terraform init` and `terraform plan`. If everything looks good run `terraform apply`.
-3. Navigate to `terraform/prod/us-va/region-setup` and run `terraform init` and `terraform plan`. If everything looks good run `terraform apply`.
+1. Login to the azure cli, `az login`. You may have to change the cloud if you receive an error. `az cloud set --name
+   AzureUSGovernment`
+2. Navigate to `terraform/prod/us-va/security-core` and run `terraform init` and `terraform plan`. If everything looks
+   good run `terraform apply`.
+3. Navigate to `terraform/prod/us-va/region-setup` and run `terraform init` and `terraform plan`. If everything looks
+   good run `terraform apply`.
 4. Deploy `mgmt` and `app` resources in a similar fashion. Order of deployment is below.
 
 ## Deployment Order of Operations
@@ -66,15 +71,18 @@ Learn more at [Coalfire OpenSource](https://coalfire.com/opensource).
 
 ## Deployment Configurations
 
-Each module, e.g. `region-setup`, has a README file that provides deployment steps, dependencies, and other notes on each component in the environment.
+Each module, e.g. `region-setup`, has a README file that provides deployment steps, dependencies, and other notes on
+each component in the environment.
 
 ## Modifications when new Admins are added
 
-- Add their PIP or use VPN IP CIDR to access and deploy resources, otherwise the user cannot access Key Vaults, storage account with the state files or the bastion hosts.
+- Add their PIP or use VPN IP CIDR to access and deploy resources, otherwise the user cannot access Key Vaults, storage
+  account with the state files or the bastion hosts.
 
 - Re-run `terraform apply` on the bastion folder to add the new PIP to the bastion NSG.
 
-- Re-run `terraform apply` on the key-vault, security-core, and region-setup folder to add the new admin's GUID to the Admin roles
+- Re-run `terraform apply` on the key-vault, security-core, and region-setup folder to add the new admin's GUID to the
+  Admin roles
 
 ## Setting Cloud Provider
 
@@ -144,7 +152,9 @@ No outputs.
 
 ## Contributing
 
-If you're interested in contributing to our projects, please review the [Contributing Guidelines](CONTRIBUTING.md). And send an email to [our team](mailto:contributing@coalfire.com) to receive a copy of our CLA and start the onboarding process.
+If you're interested in contributing to our projects, please review the [Contributing Guidelines](CONTRIBUTING.md). And
+send an email to [our team](mailto:contributing@coalfire.com) to receive a copy of our CLA and start the onboarding
+process.
 
 ## License
 

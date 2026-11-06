@@ -12,7 +12,9 @@ This deploys the Management VNet and it's subnets
 `mgmt.tf`
 
 - Update the name and number of subnets as needed in the `subnet_addrs` module.
-- If you need to add or remove Service Endpoints, do so in the `subnet_service_endpoints` block. See <https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet> for Service Endpoint options.
+- If you need to add or remove Service Endpoints, do so in the `subnet_service_endpoints` block.
+  See <https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet> for Service Endpoint
+  options.
 
 
 `tstate.tf` Update to the appropriate version and storage accounts, see sample

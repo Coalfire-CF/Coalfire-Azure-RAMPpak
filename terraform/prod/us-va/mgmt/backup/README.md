@@ -57,7 +57,8 @@ data "terraform_remote_state" "usgv-backup" {
 
 ## Additional Information
 
-The policy will only be applied to virtual machines that have the tag `BackupPolicy: backupvm_default_policy` on the associated subscriptions.
+The policy will only be applied to virtual machines that have the tag `BackupPolicy: backupvm_default_policy` on the
+associated subscriptions.
 
 ## Created Resources
 

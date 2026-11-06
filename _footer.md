@@ -1,7 +1,9 @@
 
 ## Contributing
 
-If you're interested in contributing to our projects, please review the [Contributing Guidelines](CONTRIBUTING.md). And send an email to [our team](mailto:contributing@coalfire.com) to receive a copy of our CLA and start the onboarding process.
+If you're interested in contributing to our projects, please review the [Contributing Guidelines](CONTRIBUTING.md). And
+send an email to [our team](mailto:contributing@coalfire.com) to receive a copy of our CLA and start the onboarding
+process.
 
 ## License
 

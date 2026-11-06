@@ -64,7 +64,9 @@ Run `terraform apply` again to update the remote state file in Azure.
 
 ## Post Deployment Steps - Enable Update Management
 
-After a successful deployment of the Azure Automation account Update Management will need to be turned on for all virtual machines (both Linux and Windows).  This is currently only possible via the portal until [azurerm 4.0.0](https://github.com/hashicorp/terraform-provider-azurerm/issues/2812) comes out.
+After a successful deployment of the Azure Automation account Update Management will need to be turned on for all
+virtual machines (both Linux and Windows).  This is currently only possible via the portal until [azurerm
+4.0.0](https://github.com/hashicorp/terraform-provider-azurerm/issues/2812) comes out.
 
 Deployment Steps:
 

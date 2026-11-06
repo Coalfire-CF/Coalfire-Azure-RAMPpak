@@ -1,6 +1,7 @@
 # Key Vault Deployment
 
-This creates the Key Vaults. Permissions are added through the stand alone key vault permissions resource in admin-kv-roles.tf
+This creates the Key Vaults. Permissions are added through the stand alone key vault permissions resource in
+admin-kv-roles.tf
 
 It takes 15-20 minutes to deploy all the KV's, go grab some coffee.
 
@@ -62,14 +63,16 @@ resource "azurerm_role_assignment" "trend_kv_secrets_officer" {
 
 ### Permissions Scopes
 
-Azure Key Vaults have permissions managed through [Azure Key Vault RBAC Roles.](https://docs.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli)
+Azure Key Vaults have permissions managed through [Azure Key Vault RBAC
+Roles.](https://docs.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli)
 
 Most commonly used permissions in this are
 
 - 'Key Vault Secrets Officer' - Can create and consume secrets
 - 'Key Vault Secrets User' - Can consume secrets
 
-You must have a specific Key Vault IAM role assigned to interact with Key vault secrets/certificates/keys. Standard 'Contributor' access to the vault only allows the ability to interact with the vault resource, *not vault contents.*
+You must have a specific Key Vault IAM role assigned to interact with Key vault secrets/certificates/keys. Standard
+'Contributor' access to the vault only allows the ability to interact with the vault resource, *not vault contents.*
 
 ** A user with 'Owner' or 'User Access Administrator' is the only one that can update the permissions to a Key Vault.
 
@@ -109,6 +112,7 @@ Run `terraform apply` to connect to the remote data.
 | Key Vault | Certificates |
 
 ## Locals
+
 | Name | Description |
 |------|-------------|
 | app_subnet_ids | List with all the TM application subnet IDs |

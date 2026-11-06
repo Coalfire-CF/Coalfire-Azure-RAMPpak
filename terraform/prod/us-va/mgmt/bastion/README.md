@@ -55,7 +55,8 @@ data "terraform_remote_state" "usgv-bastion" {
 }
 ```
 
-If you experience the error `Microsoft.Compute/EncryptionAtHost' feature is not enabled for this subscription.` enable encryption on host by running
+If you experience the error `Microsoft.Compute/EncryptionAtHost' feature is not enabled for this subscription.` enable
+encryption on host by running
 
 ```
 az feature register --namespace Microsoft.Compute --name EncryptionAtHost
